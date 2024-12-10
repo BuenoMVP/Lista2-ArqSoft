@@ -1,11 +1,11 @@
-class Mecanico {
+class Proprietario {
 
     update(mensagem) {
 
-        console.log(`Mecânico notificado: ${mensagem}`);
+        console.log(`Proprietário notificado: ${mensagem}`);
 
     }
 
 }
 
-export default Mecanico;
+export default Proprietario;

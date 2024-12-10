@@ -1,10 +1,4 @@
 import readline from 'readline';
-import CarroFactory from '../src/cars/CarroFactory.js';
-import GPSDecorator from '../src/decorators/GPSDecorator.js';
-import AssentoAquecidoDecorator from '../src/decorators/AssentoAquecidoDecorator.js';
-import CarroMonitor from '../src/observers/CarroMonitor.js';
-import Mecanico from '../src/observers/Mecanico.js';
-import Proprietario from '../src/observers/Proprietario.js';
 import { criarCarro } from '../index.js';
 
 jest.mock('readline', () => {
@@ -121,7 +115,7 @@ describe('Teste de criação de carro', () => {
 
       .mockImplementationOnce((question, callback) => callback('hibrido'))
 
-      .mockImplementationOnce((question, callback) => callback('ModeloY'))
+      .mockImplementationOnce((question, callback) => callback('Tesla'))
 
       .mockImplementationOnce((question, callback) => callback('não'))
 
