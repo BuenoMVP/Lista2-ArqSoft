@@ -60,7 +60,7 @@ const perguntarFuncionalidades = () => {
 
 };
 
-const criarCarro = async () => {
+export const criarCarro = async () => {
 
   const tipo = await perguntarTipoCarro();
 
