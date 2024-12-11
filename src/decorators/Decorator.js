@@ -1,22 +1,26 @@
 import GPSDecorator from './GPSDecorator.js';
 import AssentoAquecidoDecorator from './AssentoAquecidoDecorator.js';
 
+const arrDecorators = {
+
+    gps: GPSDecorator,
+
+    assentoAquecido: AssentoAquecidoDecorator
+
+}
+
 const Decorator = (chave, carro) => {
 
-    switch(chave) {
+    const decorator = arrDecorators[chave];
 
-        case 'gps':
+    if (decorator) { 
 
-            return  new GPSDecorator(carro);
+        return new decorator(carro); 
 
-        case 'assentoAquecido':
+    } else { 
 
-            return new AssentoAquecidoDecorator(carro);
+        throw new Error('Decorator não encontrado!'); 
 
-        default:
-
-            return -1;
-            
     }
 
 }

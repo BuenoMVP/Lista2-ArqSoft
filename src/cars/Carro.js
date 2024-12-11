@@ -1,3 +1,4 @@
+//Aplicado conceito de Substituição de Liskov (so L id)
 class Carro {
 
     constructor(modelo) {

@@ -32,7 +32,7 @@ export const criarCarro = async () => {
 
   })
 
-  console.log(carroComFuncionalidades.info());
+  console.log(`Carro finalizado -> ${carroComFuncionalidades.info()}`);
 
   const carroMonitor = new CarroMonitor(modelo);
 
