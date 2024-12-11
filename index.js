@@ -2,8 +2,7 @@
 import { perguntarTipoCarro, perguntarModeloCarro, perguntarFuncionalidades, fecharInput } from './src/input.js';
 
 import CarroFactory from './src/cars/CarroFactory.js';
-import GPSDecorator from './src/decorators/GPSDecorator.js';
-import AssentoAquecidoDecorator from './src/decorators/AssentoAquecidoDecorator.js';
+import Decorator from './src/decorators/Decorator.js';
 import CarroMonitor from './src/observers/CarroMonitor.js';
 import Mecanico from './src/observers/Mecanico.js';
 import Proprietario from './src/observers/Proprietario.js';
@@ -18,25 +17,22 @@ export const criarCarro = async () => {
 
   console.log(`Carro criado: ${carro.info()}`);
 
-  const { gps, assentoAquecido } = await perguntarFuncionalidades();
+  const opcionais = await perguntarFuncionalidades();
 
   let carroComFuncionalidades = carro;
 
-  if (gps.toLowerCase() === 'sim') {
+  //Aplicado conceito de Aberto / Fechado (s O lid)
+  Object.entries(opcionais).forEach(([chave, opcao]) => {
 
-    carroComFuncionalidades = new GPSDecorator(carroComFuncionalidades);
+    if (opcao.toLowerCase() === 'sim') {
 
-    console.log(carroComFuncionalidades.info());
+      carroComFuncionalidades = Decorator(chave, carroComFuncionalidades);
+  
+    }
 
-  }
+  })
 
-  if (assentoAquecido.toLowerCase() === 'sim') {
-
-    carroComFuncionalidades = new AssentoAquecidoDecorator(carroComFuncionalidades);
-
-    console.log(carroComFuncionalidades.info());
-
-  }
+  console.log(carroComFuncionalidades.info());
 
   const carroMonitor = new CarroMonitor(modelo);
 
